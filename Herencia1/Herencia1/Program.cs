@@ -16,15 +16,15 @@ namespace Herencia1
             Futbolista fut3 = new Futbolista(003, "Iker", "Helguera", 29,true, true, 15, "Mediocampista", true);
             Futbolista fut4 = new Futbolista(004, "Cristiano", "Ronaldo", 21, false, false, 14, "Delantero", false);
             Masajista mas1 = new Masajista(036, "Luis", "Delgado Meco", 62, true,true,"Medico", 30, true);
-            Masajista mas2 = new Masajista(037, "Mariano", "Fichas Enteras", true, true, "Fisioterapeuta", 15, false);
-            Masajista mas3= new Masajista(037, "Ana Maria", "Perez Encientro", false, true, "Fisioterapeuta", 15, false);
+            Masajista mas2 = new Masajista(037, "Mariano", "Fichas Enteras", 40, true, true, "Fisioterapeuta", 15, false);
+            Masajista mas3 = new Masajista(037, "Ana Maria", "Perez Encientro", 36, false, true, "Fisioterapeuta", 15, false);
             Entrenador ent1 = new Entrenador(050, "Javier", "Clemente", 69, true, true, "JC007",true);
             Entrenador ent2 = new Entrenador(050, "Ander", "Garitano", 69, true, false, "AG089", false);
 
 
             //********************** Mostrar el numero de registrados *****************************
-            
-            Console.WriteLine(SeleccionFutbol.GetContador());
+
+            //Console.WriteLine(SeleccionFutbol.GetContador());
 
             //**************** Mostrar listas de clases hijas **************************
             //List<Futbolista> futbols = new List<Futbolista>();
@@ -52,20 +52,33 @@ namespace Herencia1
             //}
 
             //COmo hacer una unica lista:
-            List<SeleccionFutbol> laRoja = new List<SeleccionFutbol>();
-            {
-                fut1,fut2,fut3,fut4,mas1,mas2,ent1,ent2
-            };
-           
+            //List<SeleccionFutbol> laRoja = new List<SeleccionFutbol>()
+            //{
+            //    fut1,fut2,fut3,fut4,mas1,mas2,mas3,ent1,ent2
+            //};
 
-            foreach(SeleccionFutbol x in laRoja)
+            
+
+            SeleccionPais s1 = new SeleccionPais("España");
+            s1.AñadirPartic(fut1);
+            s1.AñadirPartic(fut2);
+            s1.AñadirPartic(fut3);
+            s1.AñadirPartic(fut4);
+            s1.AñadirPartic(mas1);
+            s1.AñadirPartic(mas2);
+            s1.AñadirPartic(ent1);
+            s1.AñadirPartic(ent2);
+
+            foreach (SeleccionFutbol x in s1.GetParticipante())
             {
-                Console.WriteLine(laRoja.ToString());
+                Console.WriteLine(x.ToString());
             }
+            Console.WriteLine("El numero de miembros de la seleción es " + s1.GetParticipante().Count());
 
 
 
-            fut1.Viajar();
+
+           
 
             
 

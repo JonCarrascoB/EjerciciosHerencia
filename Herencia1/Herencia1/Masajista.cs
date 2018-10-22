@@ -11,11 +11,12 @@ namespace Herencia1
         private string titulacion;
         private int ageExp;
         private bool darMasajes;
+        private static int contador;
         
 
         public Masajista()
         {
-
+            contador++;
         }
 
         public Masajista(int id, string name, string address, int age, bool travel, bool concentrate, string titulacion, int ageExp, bool darMasajes):base(id, name, address,age,travel,concentrate)
@@ -23,6 +24,7 @@ namespace Herencia1
             this.titulacion = titulacion;
             this.ageExp = ageExp;
             this.darMasajes = darMasajes;
+            contador++;
         }
 
 
@@ -38,6 +40,10 @@ namespace Herencia1
         {
             return darMasajes;
         }
+        public static int GetContMas()
+        {
+            return contador;
+        }
         public void SetTitulacion(string titulacion)
         {
             this.titulacion = titulacion;
@@ -46,17 +52,17 @@ namespace Herencia1
         {
             this.ageExp = ageExp;
         }
-        public void SetDarMAsajes()
+        public void SetDarMAsajes(bool darMasajes)
         {
             this.darMasajes = darMasajes;
         }
 
         //************************** METODOS ***************************
 
-        public void DarMasaje()
-        {
-            Console.WriteLine("El masajista " + GetName() + GetAddress() + " esta dando el masaje");
-        }
+        //public void DarMasaje()
+        //{
+        //    Console.WriteLine("El masajista " + GetName() + GetAddress() + " esta dando el masaje");
+        //}
 
         //public string ToStringMasajista()
         //{
@@ -67,16 +73,30 @@ namespace Herencia1
         {
             string result = "";
             result += base.ToString() + ", cuya titulación es " + titulacion + " con  " + ageExp + " de experiencia";
-            if (darMasajes)
+            if (GetTravel())
             {
-                result += " esta dando un masaje a un jugador";
+                if (GetConcentrate())
+                {
+                    if (darMasajes)
+                    {
+                        result += " ha viajado, se ha concentrado y esta dando un masaje";
+                    }
+                    else
+                    {
+                        result += " ha viajado, se ha concentrado pero no esta dando masajes";
+                    }
+                }
+                else
+                {
+                    result += " ha viajado pero no se ha concentrado";
+                }
             }
             else
             {
-                result += "no esta trabajando, el muy haragan";
+                result += " no ha viajado";
             }
             return result;
-            
+
         }
 
     }

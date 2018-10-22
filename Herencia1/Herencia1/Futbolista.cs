@@ -50,15 +50,15 @@ namespace Herencia1
         }
 
         //*********************** METODOS ***************************
-        public void JugarPartido()
-        {
+        //public void JugarPartido()
+        //{
 
-        }
+        //}
 
-        public void Entrenar()
-        {
-            Console.WriteLine("El jugador " + GetName() + GetAddress() + " esta entrenando");
-        }
+        //public void Entrenar()
+        //{
+        //    Console.WriteLine("El jugador " + GetName() + GetAddress() + " esta entrenando");
+        //}
 
         //public string ToStringFutbolista()
         //{
@@ -69,15 +69,30 @@ namespace Herencia1
         {
             string result = "";
             result += base.ToString() + ", dorsal " + dorsal + " y juega en la demarcación " + demark;
-            if (entrena)
+            if (GetTravel())
             {
-                result += " esta entrenando";
+                if (GetConcentrate())
+                {
+                    if (entrena)
+                    {
+                        result += " ha viajado, se ha concentrado y esta entrenando";
+                    }
+                    else
+                    {
+                        result += " ha viajado, se ha concentrado pero no esta entrenando";
+                    }
+                }
+                else
+                {
+                    result += " ha viajado pero no se ha concentrado";
+                }
             }
             else
             {
-                result += "no esta entrenando";
+                result += " no ha viajado";
             }
             return result;
+            
         }
 
     }

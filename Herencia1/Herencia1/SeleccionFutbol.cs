@@ -16,8 +16,8 @@ namespace Herencia1
         private bool travel;
         private bool concentrate;
 
-        private Object a;
-        private String b;
+        //private Object a;
+        //private String b;
 
 
 
@@ -89,7 +89,7 @@ namespace Herencia1
         }
         public void SetConcentrate(bool concentrate)
         {
-            this.age = age;
+            this.concentrate = concentrate;
         }
 
 
@@ -97,15 +97,15 @@ namespace Herencia1
 
 
 
-        public void Concentrarse()
-        {
-            Console.WriteLine("El jugador " + GetName() + GetAddress() + " se ha concentrado");
-        }
+        //public void Concentrarse()
+        //{
+        //    Console.WriteLine("El jugador " + GetName() + GetAddress() + " se ha concentrado");
+        //}
 
-        public void Viajar()
-        {
-            Console.WriteLine("El jugador " + GetName() + GetAddress() + " ha viajado");
-        }
+        //public void Viajar()
+        //{
+        //    Console.WriteLine("El jugador " + GetName() + GetAddress() + " ha viajado");
+        //}
 
         //public string ToString()
         //{
@@ -117,21 +117,6 @@ namespace Herencia1
         {
             string result = "";
             result += "El miembro de la selección con identificador " + id + ", nombre " + name + ", apellidos " + address + ", edad " + age;
-            if (travel)
-            {
-                if (concentrate)
-                {
-                    result += " ha viajado y se ha concentrado";
-                }
-                else
-                {
-                    result += " ha viajado pero no se ha concentrado";
-                }
-            }
-            else
-            {
-                result += " no ha viajado";
-            }
             return result;
         }
 

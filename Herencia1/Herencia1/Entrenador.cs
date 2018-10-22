@@ -10,16 +10,18 @@ namespace Herencia1
     {
         private string idFeder;
         private bool dirigEntrena;
+        private static int contador;
 
         public Entrenador()
         {
-
+            contador++;
         }
 
         public Entrenador(int id, string name, string address, int age, bool travel, bool concentrate, string idFeder, bool dirigEntrena) : base(id, name, address,age,travel, concentrate)
         {
             this.idFeder = idFeder;
             this.dirigEntrena = dirigEntrena;
+            contador++;
         }
 
         public string GetIdFeder()
@@ -29,6 +31,10 @@ namespace Herencia1
         public bool GetDirigEntrena()
         {
             return dirigEntrena;
+        }
+        public static int GetContEntr()
+        {
+            return contador;
         }
         public void SetIdFeder(string idFeder)
         {
@@ -41,15 +47,15 @@ namespace Herencia1
 
         //********************* METODOS *******************************
 
-        public void DirigirPart()
-        {
+        //public void DirigirPart()
+        //{
 
-        }
+        //}
 
-        public void DirigirEntre()
-        {
-            Console.WriteLine("El entrenador " + GetName() + GetAddress() + " esta dirigiendo el entrenamiento");
-        }
+        //public void DirigirEntre()
+        //{
+        //    Console.WriteLine("El entrenador " + GetName() + GetAddress() + " esta dirigiendo el entrenamiento");
+        //}
 
         //public string ToStringEntrenador()
         //{
@@ -60,13 +66,27 @@ namespace Herencia1
         {
             string result = "";
             result += base.ToString() + " y identificador de la federación " + idFeder;
-            if (dirigEntrena)
+            if (GetTravel())
             {
-                result += " esta entrenando el encuentro en Londres";
+                if (GetConcentrate())
+                {
+                    if (dirigEntrena)
+                    {
+                        result += " ha viajado, se ha concentrado y esta  dirigiendo el entrenamiento";
+                    }
+                    else
+                    {
+                        result += " ha viajado, se ha concentrado pero no esta dirigiendo el entrenamiento";
+                    }
+                }
+                else
+                {
+                    result += " ha viajado pero no se ha concentrado";
+                }
             }
             else
             {
-                result += " no esta dirigiendo el entrenamiento";
+                result += " no ha viajado";
             }
             return result;
         }
