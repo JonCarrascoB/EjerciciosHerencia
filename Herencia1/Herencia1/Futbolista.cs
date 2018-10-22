@@ -10,15 +10,17 @@ namespace Herencia1
     {
         private int dorsal;
         private string demark;
+        private bool entrena;
 
         public Futbolista()
         {
 
         }
-        public Futbolista (int id, string name, string address, int age, int dorsal, string demark) :base(id, name,address,age)
+        public Futbolista (int id, string name, string address, int age, bool travel, bool concentrate, int dorsal, string demark, bool entrena) :base(id, name,address,age, travel, concentrate)
         {
             this.dorsal = dorsal;
             this.demark = demark;
+            this.entrena = entrena;
         }
 
         public int GetDorsal()
@@ -29,6 +31,10 @@ namespace Herencia1
         {
             return demark;
         }
+        public bool GetEntrena()
+        {
+            return entrena;
+        }
 
         public void SetDorsal (int dorsal)
         {
@@ -37,6 +43,10 @@ namespace Herencia1
         public void SetDemark(string demark)
         {
             this.demark = demark;
+        }
+        public void SetEntrena (bool entrena)
+        {
+            this.entrena = entrena;
         }
 
         //*********************** METODOS ***************************
@@ -47,12 +57,27 @@ namespace Herencia1
 
         public void Entrenar()
         {
-
+            Console.WriteLine("El jugador " + GetName() + GetAddress() + " esta entrenando");
         }
 
-        public string ToStringFutbolista()
+        //public string ToStringFutbolista()
+        //{
+        //    return base.ToString() + ", dorsal " +dorsal+ " y juega en la demarcación " +demark;
+        //}
+
+        public override string ToString()
         {
-            return base.ToString() + ", dorsal " +dorsal+ " y juega en la demarcación " +demark;
+            string result = "";
+            result += base.ToString() + ", dorsal " + dorsal + " y juega en la demarcación " + demark;
+            if (entrena)
+            {
+                result += " esta entrenando";
+            }
+            else
+            {
+                result += "no esta entrenando";
+            }
+            return result;
         }
 
     }

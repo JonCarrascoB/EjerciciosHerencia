@@ -9,24 +9,34 @@ namespace Herencia1
     class Entrenador:SeleccionFutbol
     {
         private string idFeder;
+        private bool dirigEntrena;
 
         public Entrenador()
         {
 
         }
 
-        public Entrenador(int id, string name, string address, int age, string idFeder) : base(id, name, address,age)
+        public Entrenador(int id, string name, string address, int age, bool travel, bool concentrate, string idFeder, bool dirigEntrena) : base(id, name, address,age,travel, concentrate)
         {
             this.idFeder = idFeder;
+            this.dirigEntrena = dirigEntrena;
         }
 
         public string GetIdFeder()
         {
             return idFeder;
         }
+        public bool GetDirigEntrena()
+        {
+            return dirigEntrena;
+        }
         public void SetIdFeder(string idFeder)
         {
             this.idFeder = idFeder;
+        }
+        public void SetDirigEntrena()
+        {
+            this.dirigEntrena = dirigEntrena;
         }
 
         //********************* METODOS *******************************
@@ -38,12 +48,27 @@ namespace Herencia1
 
         public void DirigirEntre()
         {
-
+            Console.WriteLine("El entrenador " + GetName() + GetAddress() + " esta dirigiendo el entrenamiento");
         }
 
-        public string ToStringEntrenador()
+        //public string ToStringEntrenador()
+        //{
+        //    return base.ToString() + " y identificador de la federación " + idFeder;
+        //}
+
+        public override string ToString()
         {
-            return base.ToString() + " y identificador de la federación " + idFeder;
+            string result = "";
+            result += base.ToString() + " y identificador de la federación " + idFeder;
+            if (dirigEntrena)
+            {
+                result += " esta entrenando el encuentro en Londres";
+            }
+            else
+            {
+                result += " no esta dirigiendo el entrenamiento";
+            }
+            return result;
         }
 
     }

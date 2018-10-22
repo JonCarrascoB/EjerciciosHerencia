@@ -10,31 +10,21 @@ namespace Herencia1
     {
         private string titulacion;
         private int ageExp;
-        private int v1;
-        private string v2;
-        private string v3;
-        private string v4;
-        private int v5;
+        private bool darMasajes;
+        
 
         public Masajista()
         {
 
         }
 
-        public Masajista(int id, string name, string address, int age, string titulacion, int ageExp):base(id, name, address,age)
+        public Masajista(int id, string name, string address, int age, bool travel, bool concentrate, string titulacion, int ageExp, bool darMasajes):base(id, name, address,age,travel,concentrate)
         {
             this.titulacion = titulacion;
             this.ageExp = ageExp;
+            this.darMasajes = darMasajes;
         }
 
-        public Masajista(int v1, string v2, string v3, string v4, int v5)
-        {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
-            this.v4 = v4;
-            this.v5 = v5;
-        }
 
         public string GetTitulacion()
         {
@@ -44,6 +34,10 @@ namespace Herencia1
         {
             return ageExp;
         }
+        public bool GetDarMasajes()
+        {
+            return darMasajes;
+        }
         public void SetTitulacion(string titulacion)
         {
             this.titulacion = titulacion;
@@ -52,17 +46,37 @@ namespace Herencia1
         {
             this.ageExp = ageExp;
         }
+        public void SetDarMAsajes()
+        {
+            this.darMasajes = darMasajes;
+        }
 
         //************************** METODOS ***************************
 
         public void DarMasaje()
         {
-
+            Console.WriteLine("El masajista " + GetName() + GetAddress() + " esta dando el masaje");
         }
 
-        public string ToStringMasajista()
+        //public string ToStringMasajista()
+        //{
+        //    return base.ToString() + ", cuya titulación es " + titulacion + " con  " + ageExp+ " de experiencia";
+        //}
+
+        public override string ToString()
         {
-            return base.ToString() + ", cuya titulación es " + titulacion + " con  " + ageExp+ " de experiencia";
+            string result = "";
+            result += base.ToString() + ", cuya titulación es " + titulacion + " con  " + ageExp + " de experiencia";
+            if (darMasajes)
+            {
+                result += " esta dando un masaje a un jugador";
+            }
+            else
+            {
+                result += "no esta trabajando, el muy haragan";
+            }
+            return result;
+            
         }
 
     }
