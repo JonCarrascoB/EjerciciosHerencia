@@ -10,18 +10,18 @@ namespace Herencia1
     {
         private string idFeder;
         private bool dirigEntrena;
-        private static int contador;
+        private static int contEntr;
 
         public Entrenador()
         {
-            contador++;
+            contEntr++;
         }
 
         public Entrenador(int id, string name, string address, int age, bool travel, bool concentrate, string idFeder, bool dirigEntrena) : base(id, name, address,age,travel, concentrate)
         {
             this.idFeder = idFeder;
             this.dirigEntrena = dirigEntrena;
-            contador++;
+            contEntr++;
         }
 
         public string GetIdFeder()
@@ -34,7 +34,7 @@ namespace Herencia1
         }
         public static int GetContEntr()
         {
-            return contador;
+            return contEntr;
         }
         public void SetIdFeder(string idFeder)
         {
@@ -72,23 +72,40 @@ namespace Herencia1
                 {
                     if (dirigEntrena)
                     {
-                        result += " ha viajado, se ha concentrado y esta  dirigiendo el entrenamiento";
+                        result += " ha viajado, se ha concentrado y esta  dirigiendo el entrenamiento.";
                     }
                     else
                     {
-                        result += " ha viajado, se ha concentrado pero no esta dirigiendo el entrenamiento";
+                        result += " ha viajado, se ha concentrado pero no esta dirigiendo el entrenamiento.";
                     }
                 }
                 else
                 {
-                    result += " ha viajado pero no se ha concentrado";
+                    result += " ha viajado pero no se ha concentrado. ";
                 }
             }
             else
             {
-                result += " no ha viajado";
+                result += " no ha viajado. ";
             }
             return result;
+        }
+
+        public override string Accion()
+        {
+            if (GetDirigEntrena())
+            {
+                return base.Accion() + " esta dirigiendo el entrenamiento. ";
+            }
+            return base.Accion() + " no esta dirigiendo el entrenamiento. ";
+        }
+        public override string Tarea()
+        {
+            if (GetDirigEntrena())
+            {
+                return base.Accion() + " esta dirigiendo el entrenamiento. ";
+            }
+            return base.Accion() + " no esta dirigiendo el entrenamiento. ";
         }
 
     }

@@ -11,15 +11,18 @@ namespace Herencia1
         static void Main(string[] args)
         {
 
-            Futbolista fut1 = new Futbolista(001, "Iker", "Casillas",30,true, false, 01,"Portero", false);
-            Futbolista fut2 = new Futbolista(002, "Josep", "Pique", 26, true, true, 04, "Defensa", false);
-            Futbolista fut3 = new Futbolista(003, "Iker", "Helguera", 29,true, true, 15, "Mediocampista", true);
-            Futbolista fut4 = new Futbolista(004, "Cristiano", "Ronaldo", 21, false, false, 14, "Delantero", false);
+            Futbolista fut1 = new Futbolista(001, "Iker", "Casillas",30,true, false, 01,"Portero", false, true);
+            Futbolista fut2 = new Futbolista(002, "Josep", "Pique", 26, true, true, 04, "Defensa", false, true);
+            Futbolista fut3 = new Futbolista(003, "Iker", "Helguera", 29,true, true, 15, "Mediocampista", true, true);
+            Futbolista fut4 = new Futbolista(004, "Sergio", "Ramos", 35, true, true, 03, "Defensa", true, false);
+            Futbolista fut5 = new Futbolista(005, "Julen", "Guerrero", 52, true, true, 13, "Delantero", true, false);
+            Futbolista fut6 = new Futbolista(006, "Cristiano", "Ronaldo", 21, false, false, 14, "Delantero", false, true);
             Masajista mas1 = new Masajista(036, "Luis", "Delgado Meco", 62, true,true,"Medico", 30, true);
             Masajista mas2 = new Masajista(037, "Mariano", "Fichas Enteras", 40, true, true, "Fisioterapeuta", 15, false);
             Masajista mas3 = new Masajista(037, "Ana Maria", "Perez Encientro", 36, false, true, "Fisioterapeuta", 15, false);
             Entrenador ent1 = new Entrenador(050, "Javier", "Clemente", 69, true, true, "JC007",true);
-            Entrenador ent2 = new Entrenador(050, "Ander", "Garitano", 69, true, false, "AG089", false);
+            Entrenador ent2 = new Entrenador(052, "Ander", "Garitano", 46, true, false, "AG089", false);
+            Entrenador ent3 = new Entrenador(054, "Rafael", "Benitez", 51, true, false, "AR070", false);
 
 
             //********************** Mostrar el numero de registrados *****************************
@@ -57,17 +60,21 @@ namespace Herencia1
             //    fut1,fut2,fut3,fut4,mas1,mas2,mas3,ent1,ent2
             //};
 
-            
+
 
             SeleccionPais s1 = new SeleccionPais("España");
             s1.AñadirPartic(fut1);
             s1.AñadirPartic(fut2);
             s1.AñadirPartic(fut3);
             s1.AñadirPartic(fut4);
+            s1.AñadirPartic(fut5);
+            s1.AñadirPartic(fut6);
             s1.AñadirPartic(mas1);
             s1.AñadirPartic(mas2);
             s1.AñadirPartic(ent1);
             s1.AñadirPartic(ent2);
+            s1.AltaSeleccion(mas3);
+            s1.AltaSeleccion(ent3);
 
             foreach (SeleccionFutbol x in s1.GetParticipante())
             {
@@ -75,17 +82,96 @@ namespace Herencia1
             }
             Console.WriteLine("El numero de miembros de la seleción es " + s1.GetParticipante().Count());
 
+            //s1.BajaSeleccion();
 
+            //foreach (SeleccionFutbol y in s1.GetParticipante())
+            //{
+            //    Console.WriteLine(y.ToString());
+            //}
+            //Console.WriteLine("El numero de miembros de la seleción es " + s1.GetParticipante().Count());
 
+            //Console.WriteLine(s1.PrepararPartido());
 
-           
+            //Console.WriteLine(s1.JugarPartido());
 
-            
+            int elec = -1;
+            do
+            {
+                Console.WriteLine("Elija la opción deseada");
+                Console.WriteLine("1. Alta participante");
+                Console.WriteLine("2. Baja participante");
+                Console.WriteLine("3. Mostrar Seleccion");
+                Console.WriteLine("4. Preparar Partido");
+                Console.WriteLine("5. Jugar Partido");
+                Console.WriteLine("6. Salir");
+
+                try
+                {
+                    elec = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("No es un parametro permitido");
+                }
+
+            } while (elec <= 0 || elec > 6);
+
+            Logeo(elec);
+
 
 
 
 
             Console.ReadLine();
+        }
+        public static void Logeo(int menuElec)
+        {
+            bool exit = false;
+            do
+            {
+                switch (menuElec)
+                {
+                    case 1:
+
+                        s1.AñadirPartic();
+                        exit = true;
+                        break;
+                    case 2:
+                        s1.BajaSeleccion();
+                        exit = true;
+                        break;
+                    case 3:
+                        s1.BajaSeleccion();
+                        exit = true;
+                        break;
+                    case 4:
+                        s1.BajaSeleccion();
+                        exit = true;
+                        break;
+                    case 5:
+                        s1.BajaSeleccion();
+                        exit = true;
+                        break;
+                    case 3:
+                        Salir();
+                        Console.WriteLine("Que tenga usted un buen día");
+                        exit = true;
+                        break;
+                }
+            } while (exit == false);
+            return;
+        }
+
+        public void AltaSeleccion()
+        {
+            Console.WriteLine("Inserte el tipo de miembro de la selección");
+            string type = Console.ReadLine();
+            if (type == "Futbolista")
+            {
+                Console.WriteLine("Inserte el numero de ID");
+                int id = Convert.ToInt32(Console.ReadLine());
+
+            }
         }
     }
 }

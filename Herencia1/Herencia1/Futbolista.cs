@@ -10,17 +10,21 @@ namespace Herencia1
     {
         private int dorsal;
         private string demark;
-        private bool entrena;
+        private bool entrena, play;
+        private static int contFut;
+
 
         public Futbolista()
         {
-
+            contFut++;
         }
-        public Futbolista (int id, string name, string address, int age, bool travel, bool concentrate, int dorsal, string demark, bool entrena) :base(id, name,address,age, travel, concentrate)
+        public Futbolista(int id, string name, string address, int age, bool travel, bool concentrate, int dorsal, string demark, bool entrena, bool play) :base(id, name,address,age, travel, concentrate)
         {
             this.dorsal = dorsal;
             this.demark = demark;
             this.entrena = entrena;
+            this.play = play;
+            contFut++;
         }
 
         public int GetDorsal()
@@ -35,6 +39,14 @@ namespace Herencia1
         {
             return entrena;
         }
+        public bool GetPlay()
+        {
+            return play;
+        }
+        public static int GetContFut()
+        {
+            return contFut;
+        }
 
         public void SetDorsal (int dorsal)
         {
@@ -47,6 +59,10 @@ namespace Herencia1
         public void SetEntrena (bool entrena)
         {
             this.entrena = entrena;
+        }
+        public void SetPlay (bool play)
+        {
+            this.play = play;
         }
 
         //*********************** METODOS ***************************
@@ -93,6 +109,23 @@ namespace Herencia1
             }
             return result;
             
+        }
+
+        public override string Accion()
+        {
+            if (GetEntrena())
+            {
+                return base.Accion() + " esta entrenando. ";
+            }
+            return base.Accion() + " no esta entrenando. ";
+        }
+        public override string Tarea()
+        {
+            if (GetPlay())
+            {
+                return base.Accion() + " esta jugando. ";
+            }
+            return base.Accion() + " no esta jugando. ";
         }
 
     }

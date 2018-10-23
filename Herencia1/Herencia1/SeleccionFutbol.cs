@@ -15,6 +15,7 @@ namespace Herencia1
         private static int contador;
         private bool travel;
         private bool concentrate;
+        
 
         //private Object a;
         //private String b;
@@ -83,7 +84,7 @@ namespace Herencia1
         {
             this.age = age;
         }
-        public void SetTRavel(bool travel)
+        public void SetTravel(bool travel)
         {
             this.travel = travel;
         }
@@ -91,12 +92,19 @@ namespace Herencia1
         {
             this.concentrate = concentrate;
         }
+        public virtual string Accion()
+        {
+            return "";
+        }
+        public virtual string Tarea()
+        {
+            return "";
+        }
 
 
         //*********************** METODOS ********************************
 
-
-
+           
         //public void Concentrarse()
         //{
         //    Console.WriteLine("El jugador " + GetName() + GetAddress() + " se ha concentrado");

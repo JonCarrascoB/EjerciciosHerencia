@@ -11,12 +11,12 @@ namespace Herencia1
         private string titulacion;
         private int ageExp;
         private bool darMasajes;
-        private static int contador;
+        private static int contMas;
         
 
         public Masajista()
         {
-            contador++;
+            contMas++;
         }
 
         public Masajista(int id, string name, string address, int age, bool travel, bool concentrate, string titulacion, int ageExp, bool darMasajes):base(id, name, address,age,travel,concentrate)
@@ -24,7 +24,7 @@ namespace Herencia1
             this.titulacion = titulacion;
             this.ageExp = ageExp;
             this.darMasajes = darMasajes;
-            contador++;
+            contMas++;
         }
 
 
@@ -42,7 +42,7 @@ namespace Herencia1
         }
         public static int GetContMas()
         {
-            return contador;
+            return contMas;
         }
         public void SetTitulacion(string titulacion)
         {
@@ -98,6 +98,21 @@ namespace Herencia1
             return result;
 
         }
-
+        public override string Accion()
+        {
+            if (GetDarMasajes())
+            {
+            return base.Accion() + " va a dar masajes. ";
+            }
+            return base.Accion() + " no da masajes. ";
+        }
+        public override string Tarea()
+        {
+            if (GetDarMasajes())
+            {
+                return base.Accion() + " va a dar masajes. ";
+            }
+            return base.Accion() + " no da masajes. ";
+        }
     }
 }
