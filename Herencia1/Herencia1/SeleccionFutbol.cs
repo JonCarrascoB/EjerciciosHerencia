@@ -12,7 +12,7 @@ namespace Herencia1
         private string name;
         private string address;
         private int age;
-        private static int contador;
+        private static int contador=0;
         private bool travel;
         private bool concentrate;
         

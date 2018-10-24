@@ -94,6 +94,8 @@ namespace Herencia1
 
             //Console.WriteLine(s1.JugarPartido());
 
+            Console.Clear();
+
             int elec = -1;
             do
             {
@@ -114,52 +116,41 @@ namespace Herencia1
                     Console.WriteLine("No es un parametro permitido");
                 }
 
-            } while (elec <= 0 || elec > 6);
-
-            Logeo(elec);
-
-
-
-
-
-            Console.ReadLine();
-        }
-        public static void Logeo(int menuElec)
-        {
-            bool exit = false;
-            do
-            {
-                switch (menuElec)
+                switch (elec)
                 {
                     case 1:
 
                         s1.AñadirPartic();
-                        exit = true;
+
                         break;
                     case 2:
                         s1.BajaSeleccion();
-                        exit = true;
+
                         break;
                     case 3:
                         s1.BajaSeleccion();
-                        exit = true;
+
                         break;
                     case 4:
                         s1.BajaSeleccion();
-                        exit = true;
+
                         break;
                     case 5:
                         s1.BajaSeleccion();
-                        exit = true;
+
                         break;
-                    case 3:
-                        Salir();
+                    case 6:
+                        
                         Console.WriteLine("Que tenga usted un buen día");
-                        exit = true;
+
                         break;
                 }
-            } while (exit == false);
-            return;
+
+            } while (elec != 6);
+
+            Console.ReadLine();
+        
+        
         }
 
         public void AltaSeleccion()
